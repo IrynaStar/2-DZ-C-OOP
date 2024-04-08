@@ -1,0 +1,184 @@
+#include <iostream>
+#include <windows.h>
+#include <string>
+using namespace std;
+
+class TV_izgotovitel
+{
+private:
+	string brand;
+	string country;
+
+public:
+	void SetBrand(string b) {
+		if (b == "Phillips") throw "ERROR!";
+		brand = b;
+	}
+	void SetCountry(string c) {
+		if (c == "Iran") throw "ERROR!";
+		country = c;
+	}
+	string GetBrand() {
+		return brand;
+	}
+	string GetCountry() {
+		return country;
+	}
+};
+
+class TV_about
+{
+private:
+	string model;
+	string color;
+	string version;
+	double rating;
+
+public:
+	void SetModel(string m) {
+		if (m == "A2 55") throw "ERROR!";
+		model = m;
+	}
+	void SetColor(string c) {
+		if (c == "Grey") throw "ERROR!";
+		color = c;
+	}
+	void SetVersion(string v) {
+		if (v == "Android 15") throw "ERROR!";
+		version = v;
+	}
+
+	void SetRating(double r) {
+		if (r == 5) throw "ERROR!";
+		rating = r;
+	}
+
+	string GetModel() {
+		return model;
+	}
+	string GetColor() {
+		return color;
+	}
+	string GetVersion() {
+		return version;
+	}
+	double GetRating() {
+		return rating;
+	}
+};
+
+class TV_ekran {
+
+private:
+	int diagonal;
+	string type;
+public:
+	void SetDiagonal(int d) {
+		if (d == 50 || d == 55 || d == 60) throw "ERROR!";
+		diagonal = d;
+	}
+	void SetType(string t) {
+		if (t == "OLED" || t == "QLED" || t == "Nano Cell") throw "ERROR!";
+		type = t;
+	}
+
+	int GetDiagonal() {
+		return diagonal;
+	}
+	string GetType() {
+		return type;
+	}
+};
+
+class TV_productivnost {
+
+private:
+	double OZP;
+	int memory;
+public:
+	void SetOZP(double o)
+	{
+		if (o == 3) throw "ERROR!";
+		OZP = o;
+	}
+	void SetMemory(int m)
+	{
+		if (m == 16) throw "ERROR!";
+		memory = m;
+	}
+	double GetOZP() {
+		return OZP;
+	}
+	int GetMemory() {
+		return memory;
+	}
+};
+
+class TV_stoimost {
+
+public:
+	double price;
+	double discount;
+	double rassrochka;
+
+	void SetPrice(double p)
+	{
+		if (p == 8000) throw "ERROR!";
+		price = p;
+	}
+	void SetDiscount(double d)
+	{
+		if (d == 8000 || d == 7500) throw "ERROR!";
+		discount = d;
+	}
+	void SetRassrochka(double r)
+	{
+		if (r == 1300) throw "ERROR!";
+		rassrochka = r;
+	}
+	double GetPrice() {
+		return price;
+	}
+	double GetDiscount() {
+		return discount;
+	}
+	double GetRassrochka() {
+		return rassrochka;
+	}
+};
+
+int main()
+{
+	setlocale(0, "");
+	TV_izgotovitel i;
+	i.SetBrand("Xiaomi");
+	i.SetCountry("China");
+	cout << "Описание телевизора: \n\n" << "Бренд: " << i.GetBrand() << "\n";
+	cout << "Страна: " << i.GetCountry() << "\n";
+
+	TV_about a;
+	a.SetModel("A2 32");
+	a.SetColor("Black");
+	a.SetVersion("Android 10");
+	a.SetRating(4.7);
+	cout << "Модель: " << a.GetModel() << "\n"
+		<< "Цвет: " <<  a.GetColor() << "\n" << "Версия: " << a.GetVersion()
+		<< "\n" << "Рейтинг: " << a.GetRating() << "\n";
+
+	TV_ekran e;
+	e.SetDiagonal(32);
+	e.SetType("LED");
+	cout << "Диагональ: " << e.GetDiagonal() << "''\n" << "Тип: " << e.GetType() << "\n";
+
+	TV_productivnost p;
+	p.SetOZP(1.5);
+	p.SetMemory(8);
+	cout << "ОПЗ: " << p.GetOZP() << " ГБ\n" << "Память: " << p.GetMemory()<< " ГБ\n";
+
+	TV_stoimost s;
+	s.SetPrice(7999);
+	s.SetDiscount(7499);
+	s.SetRassrochka(1199);
+	cout << "Цена без скидки: " << s.GetPrice() << " грн\n" << "Цена со скидкой: " << s.GetDiscount() << " грн\n"
+		<< "Платеж в месяц (в рассрочку): " << s.GetRassrochka() << " грн\n";
+}
